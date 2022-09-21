@@ -17,6 +17,29 @@ class Solution {
     }
 }
 
+//------------------------------------------------------------------------------------------ Above code gives TLE
+class Solution {
+    public static ArrayList<Integer> duplicates(int arr[], int n) {
+   
+        HashMap <Integer, Integer> h = new HashMap<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i =0;i<arr.length;i++){
+            h.put(arr[i],h.getOrDefault(arr[i],0)+1);
+        }
+        for(Map.Entry<Integer, Integer> e : h.entrySet()){
+            if(e.getValue() >1){
+                ans.add(e.getKey());
+            }
+       }
+        if(ans.size() == 0){
+            ans.add(-1);
+        }
+        Collections.sort(ans);
+        return ans;
+    }
+}
+
+
 Input:
 N = 4
 a[] = {0,3,1,2}
